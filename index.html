@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <script defer src="main.js"></script>
+  <title>Bar</title>
+</head>
+<body>
+  <form class="input-box">
+    <div>
+      <span>최솟값</span>
+      <input type="number" class='input' id="min-input" placeholder="최솟값" value="0" pattern="[0-9]" oninput="updateInput()">
+    </div>
+    <div>
+      <span>최댓값</span>
+      <input type="number" class='input' id="max-input" placeholder="최댓값" value="10" pattern="[0-9]" onchange="updateInput()">
+    </div>
+    <div>
+      <!-- <input type="number" id="current-number" disabled value="8" > -->
+      <span>현재값</span>
+      <span id="current-number">8</span>
+    </div>
+    
+  </form>
+  <div class="container">
+    <div class="bar"></div>
+    <div class="display-number">
+      <span id="min-value" class="number"></span>
+      <span id="half-value" class="number"></span>
+      <span id="max-value" class="number"></span>
+    </div>
+</div>
+
+
+</body>
+</html>
