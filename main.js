@@ -1,18 +1,16 @@
 const minNumInput = document.getElementById('min-input');
 const maxNumInput = document.getElementById('max-input');
-const bar = document.querySelector('.bar');
-minNumInput.addEventListener('input', function(){
-  this.value = this.value.replace(/[^0-9]/g, "")
-})
-maxNumInput.addEventListener('input', function(){
+const currentValueEl = document.getElementById('current-number')
+const input = document.querySelector('.input')
+
+input.addEventListener('input', function(){
   this.value = this.value.replace(/[^0-9]/g, "")
 })
 
+const bar = document.querySelector('.bar');
 const minValueEl = document.getElementById('min-value');
 const maxValueEl = document.getElementById('max-value');
 const halfValueEl = document.getElementById('half-value');
-const currentValueEl = document.getElementById('current-number')
-
 
 const updateInput = () => {
 
@@ -24,21 +22,18 @@ const updateInput = () => {
   maxValueEl.textContent = maxNum
   halfValueEl.textContent = halfNum
 
-  // if (minNum > maxNum || minNum !== minValueEl || maxNum !== maxValueEl ) {
-  if (minNum > maxNum ) {
-    alert('숫자 입력 방식에 오류가 있음')
+  if (minNum >= maxNum ) {
+    alert('최솟값은 최댓값보다 작아야 함')
     minNumInput.value = 0
     updateInput()
   }
 }
 
-updateInput()
-
 const updateRandomNum = () => {
   const minNum = parseInt(minNumInput.value)
   const maxNum = parseInt(maxNumInput.value)
   const halfNum = parseInt(minNum+maxNum/2)
-  let curVal = Math.floor(Math.random()*(maxNum-minNum)+minNum)
+  let curVal = Math.floor(Math.random()*(maxNum-minNum-1) +minNum +1)
   currentValueEl.textContent = curVal
   const fill = (curVal - minNum) / (maxNum - minNum) * 100;
 
@@ -49,5 +44,5 @@ const updateRandomNum = () => {
   }
 
 }
-
+updateInput()
 setInterval(updateRandomNum, 3000)

@@ -1,0 +1,27 @@
+<!-- <form class="input-box"> -->
+<div class="input-box">
+  <div>
+    <span>최솟값 </span>
+    <input type="number" class='input' (keypress)="onlyNumber($event)" [(ngModel)]="minNum" placeholder="최솟값" (input)="updateHalf()">
+  </div>
+  <div>
+    <span>최댓값 </span>
+    <input type="number" class='input' (keypress)="onlyNumber($event)" [(ngModel)]="maxNum" placeholder="최댓값" (input)="updateHalf()">
+  </div>
+  <div>
+    <span class="input">현재값: {{currentNum}}</span>
+  </div>
+</div>
+<!-- </form> -->
+<div class="container">
+  <div class="bar" 
+  [ngStyle]="currentNum < updateHalf() 
+    ? { 'background' : 'linear-gradient(to right, red 0%, red '+fill+'%, black '+fill+ '%, black calc('+fill+ '% + 1px), lightgray calc(' + fill + '% + 1px), lightgray 100%)' } 
+    : { 'background' : 'linear-gradient(to right, green 0%, green ' + fill + '%, black ' + fill + '%, black calc(' + fill + '% + 1px), lightgray calc(' + fill + '% + 1px), lightgray 100%)' }">
+</div>
+  <div class="display-number">
+    <span id="min-value" class="number">{{minNum}}</span>
+    <span id="half-value" class="number">{{updateHalf()}}</span>
+    <span id="max-value" class="number">{{maxNum}}</span>
+  </div>
+</div>
