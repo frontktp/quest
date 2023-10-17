@@ -41,8 +41,4 @@ export class AppComponent {
     return result
   }
 
-  alertError() {
-    alert('숫자 입력 방식에 오류가 있음')
-    this.minNum=0
-  }
 }
